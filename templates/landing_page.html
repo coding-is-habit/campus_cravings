@@ -1,14 +1,59 @@
-<!-- templates/landing_page.html -->
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Our Site</title>
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- connect css -->
+    <link rel="stylesheet" href="{% static 'css/landing_page.css' %}">
+    <title>Main Page</title>
 </head>
+
 <body>
-    <h1>Welcome to Our Food Ordering System</h1>
-    <p>Enjoy ordering food from your favorite shops around the college.</p>
+    <div id="page1">
+        <div id="page1_content">
+            <h1>CampusCravings</h1>
+            <h2>Fuel Your Study Sessions with Campus Craving Delights!</h2>
+            <a href=" ">Shops</a>
+        </div>
+    </div>
+    <!-- header section -->
+    <div id="header">
+        <nav id="navbar">
+            <h1>CrampusCravings</h1>
+            <ul>
+                <li><a href="{% url 'core:landing_page' %}">Home</a></li>
+                <li><a href="{% url 'core:shop_list' %}">Shops</a></li>
+                <li><a href="">Cart</a></li>
+                <li><a href="">Contact</a></li>
+                <li><a href="">Profile</a></li>
+            </ul>
+            <div id="phone">
+                <a href="tel:+91-7814064545">+91-7814064545</a>
+            </div>
+        </nav>
+        <div id="mobile_menu">
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="Shop.html">Shop</a></li>
+                <li><a href="">Cart</a></li>
+                <li><a href="">Contact</a></li>
+                <li><a href="">Profile</a></li>
+            </ul>
+        </div>
+    </div>
+
+    </div>
+    </div>
 </body>
+
 </html>

@@ -1,0 +1,172 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    /*in body of image will stop as soon as it comes down the x */
+}
+
+#page1 {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#page1::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://mccblr.edu.in/wp-content/uploads/2022/06/cafeteria.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    filter: brightness(40%);
+}
+
+#page1_content {
+    position: absolute;
+}
+
+#page1_content h1 {
+    color: #FFFFFF;
+    font-size: 2.8rem;
+    text-shadow: 2px 2px 2px #000;
+}
+
+#page1_content h2 {
+    color: #FFFFFF;
+    font-size: 2rem;
+    font-family: cursive;
+    margin-top: 1rem;
+    margin-bottom: 4rem;
+    text-shadow: 2px 2px 2px #000;
+}
+
+#page1_content a {
+    color: #FFFFFF;
+    padding: 3px 20px 3px 20px;
+    border: 1px solid orange;
+    background: rgb(5, 5, 5);
+    font-size: 1.5rem;
+    text-decoration: none;
+    /*it will remove the anchor line */
+    border-radius: 25px;
+}
+
+#page1_content a:hover {
+    background: #F9E6099C;
+}
+
+#header {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 70px;
+    line-height: 70px;
+    /*the content will be in middle */
+}
+
+#navbar {
+    display: flex;
+    justify-content: space-around;
+    background: rgb(0, 0, 0, 0.5);
+}
+
+#navbar h1 {
+    color: orange;
+    font-size: 1.8rem;
+    /* it will give that hd effect */
+    text-shadow: 2px 2px 2px #000;
+    font-family: cursive;
+}
+
+#navbar ul {
+    display: flex;
+}
+
+#navbar ul li {
+    list-style: none;
+    padding: 3px 15px 3px 15px;
+}
+
+#navbar ul li:hover,
+#phone a:hover,
+#mobile_menu ul li:hover,
+#phone a:hover {
+    background: #F9E6099C;
+    cursor: pointer;
+}
+
+#navbar ul li a {
+    text-decoration: none;
+    color: #FFFCFC;
+    font-size: 1.1rem;
+}
+
+#phone a {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 1.1rem;
+    padding: 3px 15px 3px 15px;
+    border: 1px solid orange;
+}
+
+#mobile_menu {
+    display: none;
+    height: 40px;
+    line-height: 40px;
+    background-color: magenta;
+
+
+}
+
+#mobile_menu ul {
+    display: flex;
+    justify-content: center;
+}
+
+#mobile_menu ul li {
+    list-style: none;
+    padding: 0 5px 0 5px;
+}
+
+#mobile_menu ul li a {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+@media screen and (max-width : 768px) {
+    #mobile_menu {
+        display: block;
+    }
+
+    #navbar ul {
+        display: none;
+    }
+
+    html {
+        font-size: 95%;
+    }
+}
+
+@media screen and (max-width : 360px) {
+    html {
+        font-size: 70%;
+    }
+}
