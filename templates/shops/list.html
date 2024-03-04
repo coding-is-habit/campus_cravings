@@ -1,10 +1,31 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shops</title>
+    <link rel="stylesheet" href="{% static 'css/shop.css' %}">
 </head>
 <body>
-
+<div id="shop">
+    {% include 'navbar.html' %}
+    <h1 id="section" style="padding-top: 100px">Shops</h1>
+    <div id="menu_row">
+        {% for shop in shops %}
+            <div id="menu_col">
+                <a href="{% url 'core:shop_detail' shop.id %}">
+                    <h2>{{ shop.name }}</h2>
+                    <div class="box">
+                        <div id="image">
+                            <img src="{{ shop.image }}" alt="{{ shop.name }}" style="height: 100%; width: 100%">
+                        </div>
+                        <h3>{{ shop.description }}</h3>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
 </body>
 </html>

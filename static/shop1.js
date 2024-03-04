@@ -17,63 +17,68 @@ let products = [
     {
         id: 1,
         name: 'Full Meal',
-        image: '4.png',
+        image: '/static/image/4.png',
         price: 120
     },
     {
         id: 2,
         name: 'Briyani',
-        image: '6.png',
+        image: '/static/image/6.png',
         price: 150
     },
     {
         id: 3,
         name: 'Mini Meal',
-        image: '3.png',
+        image: '/static/image/3.png',
         price: 60
     },
     {
         id: 4,
         name: 'Chole Bhature',
-        image: '2.png',
+        image: '/static/image/2.png',
         price: 100
     },
     {
         id: 5,
         name: 'Idli',
-        image: '5.png',
+        image: '/static/image/5.png',
         price: 40
     },
     {
         id: 6,
         name: 'Set Dosa',
-        image: '1.png',
+        image: '/static/image/1.png',
         price: 70
     }
 
 ];
 let listCards = [];
+
 function initApp() {
     products.forEach((value, key) => {
         let newDiv = document.createElement('div');
         newDiv.classList.add('item');
         newDiv.innerHTML = `
-            <img src="image/${value.image}">
+            <img src="${value.image}">
             <div class="title">${value.name}</div>
             <div class="price">${value.price.toLocaleString()}</div>
             <button onclick="addToCard(${key})">Add To Cart</button>`;
         list.appendChild(newDiv);
     })
 }
-initApp();
+
 function addToCard(key) {
     if (listCards[key] == null) {
-        // copy product form list to list card
+        // Copy product from the list to the list card
         listCards[key] = JSON.parse(JSON.stringify(products[key]));
         listCards[key].quantity = 1;
+    } else {
+        // Increase the quantity if the item already exists in the cart
+        listCards[key].quantity++;
     }
     reloadCard();
 }
+
 function reloadCard() {
     listCard.innerHTML = '';
     let count = 0;
@@ -84,7 +89,7 @@ function reloadCard() {
         if (value != null) {
             let newDiv = document.createElement('li');
             newDiv.innerHTML = `
-                <div><img src="image/${value.image}"/></div>
+                <div><img src="${value.image}"/></div>
                 <div>${value.name}</div>
                 <div>${value.price.toLocaleString()}</div>
                 <div>
@@ -98,6 +103,7 @@ function reloadCard() {
     total.innerText = totalPrice.toLocaleString();
     quantity.innerText = count;
 }
+
 function changeQuantity(key, quantity) {
     if (quantity == 0) {
         delete listCards[key];
@@ -107,3 +113,6 @@ function changeQuantity(key, quantity) {
     }
     reloadCard();
 }
+
+// Initialize the app
+initApp();

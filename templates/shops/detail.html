@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop1</title>
+    <!-- Load Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Load shop1.css -->
+    <link rel="stylesheet" href="{% static 'css/shop1.css' %}">
+</head>
+<body>
+{% block content %}
+    {% include 'navbar.html' %}
+{% endblock %}
+<div class="container" style="height: 100px">
+    <header>
+        <h1 style="margin-top: 100px">{{ shop.name }}</h1>
+        <div class="shopping">
+            <!-- Replace 'shopping.svg' with appropriate static URL for your image -->
+            <img src="{% static 'image/shopping.svg' %}" style="margin-top: 100px">
+            <span class="quantity" style="margin-top: 100px">0</span>
+        </div>
+    </header>
+
+    <div class="list">
+        <!-- Include Django template logic to iterate over items -->
+        {% for item in items %}
+            <!-- Display item information here -->
+            <!-- Example: -->
+            <!-- <div>{{ item.name }}</div> -->
+        {% endfor %}
+    </div>
+</div>
+
+<div class="card">
+    <h1>Card</h1>
+    <ul class="listCard">
+        <!-- Include Django template logic to iterate over selected items -->
+        <!-- Example: -->
+        <!-- {% for selected_item in selected_items %} -->
+        <!-- <li>{{ selected_item.name }}</li> -->
+        <!-- {% endfor %} -->
+    </ul>
+    <div class="checkOut">
+        <div class="total">0</div>
+        <div class="closeShopping">Close</div>
+    </div>
+</div>
+
+<!-- Load shop1.js -->
+<script src="{% static 'shop1.js' %}"></script>
+
+</body>
+</html>

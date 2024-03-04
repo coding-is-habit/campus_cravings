@@ -1,0 +1,27 @@
+{% load static %}
+
+
+<div id="header">
+        <nav id="navbar">
+            <h1>CrampusCravings</h1>
+            <ul>
+                <li><a href="{% url 'core:landing_page' %}">Home</a></li>
+                <li><a href="{% url 'core:shop_list' %}">Shops</a></li>
+                <li><a href="">Cart</a></li>
+                <li><a href="">Contact</a></li>
+                <li><a href="">Profile</a></li>
+            </ul>
+            <div id="phone">
+                <a href="tel:+91-7814064545">+91-7814064545</a>
+            </div>
+        </nav>
+        <div id="mobile_menu">
+            <ul>
+                <li><a href="{% url 'core:landing_page' %}">Home</a></li>
+                <li><a href="{% url 'core:shop_list' %}">Shops</a></li>
+                <li><a href="">Cart</a></li>
+                <li><a href="">Contact</a></li>
+                <li><a href="">Profile</a></li>
+            </ul>
+        </div>
+</div>
