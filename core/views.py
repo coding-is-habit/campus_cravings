@@ -30,6 +30,7 @@ class ShopListView(ListView):
     model = Shop
     template_name = 'shops/list.html'
     context_object_name = 'shops'
+    queryset = Shop.objects.all().order_by("-id")
 
 # Shop Detail View
 class ShopDetailView(DetailView):
