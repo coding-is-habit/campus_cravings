@@ -2,7 +2,7 @@
 
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView, DetailView
-from django.contrib.auth import login as auth_login
+from django.contrib.auth import login as auth_login, authenticate, login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -13,18 +13,41 @@ def landing_page(request):
     return render(request, 'landing_page.html')
 
 # User Registration View
-def register(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            auth_login(request, user)
-            messages.success(request, 'Registration successful.')
-            return redirect('core:shop_list')
-    else:
-        form = UserCreationForm()
-    return render(request, 'registration/register.html', {'form': form})
 
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+
+
+def signup_login(request):
+    action = request.GET.get('action', 'login')
+
+    # Initialize form variable based on the action parameter
+    if action == 'register':
+        form = UserCreationForm()
+    else:
+        form = AuthenticationForm()
+
+    if request.method == 'POST':
+        if 'login' in request.POST:
+            # Create a new instance of the login form with the POST data
+            form = AuthenticationForm(request, data=request.POST)
+            if form.is_valid():
+                user = form.get_user()
+                login(request, user)
+                return redirect('core:landing_page')  # Redirect to a home page or other target
+        elif 'register' in request.POST:
+            # Create a new instance of the registration form with the POST data
+            form = UserCreationForm(request.POST)
+            if form.is_valid():
+                form.save()
+                username = form.cleaned_data.get('username')
+                password = form.cleaned_data.get('password1')
+                user = authenticate(username=username, password=password)
+                login(request, user)
+                return redirect('core:landing_page')  # Redirect to a home page or other target
+
+    return render(request, 'login.html', {'form': form, 'action': action})
 # Shop Listing View
 class ShopListView(ListView):
     model = Shop

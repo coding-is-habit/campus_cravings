@@ -1,14 +1,36 @@
-<!-- users/templates/users/login.html -->
-{##}
-{#{% extends "base.html" %}#}
-
-{% block content %}
-  <div>
-    <h2>Login</h2>
-    <form method="post">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit">Login</button>
-    </form>
-  </div>
-{% endblock content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
+    <link rel="stylesheet" href="{% static 'css/LoginPage.css' %}">
+    <title>{% if action == 'register' %}Register{% else %}Login{% endif %} Page</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="login_box">
+            <form method="post" action="?action={{ action }}">
+                {% csrf_token %}
+                <div class="login-header">
+                    <span>{% if action == 'register' %}Register{% else %}Login{% endif %}</span>
+                </div>
+                {{ form.as_p }}
+                <div class="input_box">
+                    <input type="submit" name="{{ action }}" class="input-submit" value="{% if action == 'register' %}Register{% else %}Login{% endif %}">
+                </div>
+                {% if action == 'register' %}
+                    <div class="register">
+                        <span>Already have an account? <a href="?action=login">Login</a></span>
+                    </div>
+                {% else %}
+                    <div class="register">
+                        <span>Don't have an account? <a href="?action=register">Register</a></span>
+                    </div>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</body>
+</html>
