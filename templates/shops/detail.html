@@ -9,6 +9,8 @@
     <!-- Load Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Load shop1.css -->
+{#    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>#}
+
     <link rel="stylesheet" href="{% static 'css/shop1.css' %}">
 </head>
 <body>
@@ -45,8 +47,9 @@
         <!-- {% endfor %} -->
     </ul>
     <div class="checkOut">
-        <div class="total">0</div>
+        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Nr4SZq3CcNhNtj" async> </script> </form>
         <div class="closeShopping">Close</div>
+{#        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_IyjUWEy22I8YiG" async> </script> </form>#}
     </div>
 </div>
 

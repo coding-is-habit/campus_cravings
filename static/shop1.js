@@ -100,7 +100,7 @@ function reloadCard() {
             listCard.appendChild(newDiv);
         }
     })
-    total.innerText = totalPrice.toLocaleString();
+    total.innerText = "₹"+totalPrice.toLocaleString()  ;
     quantity.innerText = count;
 }
 
